@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  /* الخطوط */
+  --font-display: var(--font-noto-kufi), "Noto Kufi Arabic", sans-serif;
+  --font-body: var(--font-tajawal), "Tajawal", sans-serif;
+
+  /* كريمي دافئ — الخلفيات */
+  --color-cream-50: #faf9f4;
+  --color-cream-100: #f4f1e7;
+  --color-cream-200: #e9e3d2;
+  --color-cream-300: #d9d0b8;
+
+  /* أخضر الغابات — الهوية الأساسية */
+  --color-forest-50: #f1f6f2;
+  --color-forest-100: #dfebe2;
+  --color-forest-200: #c2d7c8;
+  --color-forest-300: #9abba4;
+  --color-forest-400: #6f9e80;
+  --color-forest-500: #4e8261;
+  --color-forest-600: #3a684c;
+  --color-forest-700: #2f543e;
+  --color-forest-800: #264534;
+  --color-forest-900: #1e372a;
+  --color-forest-950: #10241a;
+
+  /* تراكوتا — لون التمييز */
+  --color-clay-50: #fbf5ef;
+  --color-clay-100: #f6e7d9;
+  --color-clay-200: #ecd0b4;
+  --color-clay-300: #e0b087;
+  --color-clay-400: #d48f5d;
+  --color-clay-500: #c97a41;
+  --color-clay-600: #b26234;
+  --color-clay-700: #8f4e2b;
+  --color-clay-800: #6e3d24;
+  --color-clay-900: #522f1e;
+
+  /* ألوان دلالية */
+  --color-background: var(--color-cream-50);
+  --color-foreground: var(--color-forest-950);
+  --color-muted: #5b6a5d;
+}
+
+/* ===== أساسيات ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-forest-200);
+  color: var(--color-forest-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-forest-500);
+  outline-offset: 3px;
+}
+
+/* تعويض ارتفاع الهيدر الثابت عند التنقل بالمرساة */
+section[id],
+main[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* ===== ظهور تدريجي عند التمرير ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
