@@ -81,8 +81,26 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-forest-800/80 pt-6">
-          <p className="text-center text-sm text-forest-300">{footer.copyright}</p>
+        <div className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-forest-800/80 pt-6 text-xs sm:text-sm text-forest-300">
+          <p className="text-center sm:text-right">{footer.copyright}</p>
+          {"agencyCredit" in footer && footer.agencyCredit && (
+            <a
+              href={footer.agencyCredit.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${footer.agencyCredit.text} ${footer.agencyCredit.agency} - تواصل عبر واتساب لطلب تصميم موقع`}
+              title="تواصل مع وكالة نقرة لتصميم وتطوير موقعك الإلكتروني عبر واتساب"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-forest-900/90 hover:bg-forest-800 border border-forest-800 hover:border-emerald-500/50 text-forest-200 hover:text-white transition-all duration-200 group shadow-sm text-xs font-medium"
+            >
+              <span className="text-forest-400 group-hover:text-forest-200 transition-colors">
+                {footer.agencyCredit.text}
+              </span>
+              <span className="font-semibold text-emerald-400 group-hover:text-emerald-300 transition-colors">
+                {footer.agencyCredit.agency}
+              </span>
+              <WhatsAppIcon className="size-3.5 text-emerald-400 group-hover:text-emerald-300 transition-transform group-hover:scale-110" />
+            </a>
+          )}
         </div>
       </Container>
     </footer>
